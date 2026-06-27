@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { AuthButton, MobileAuthLinks } from "@/components/auth/auth-button";
 import { NAV_LINKS, SITE } from "@/constants/site";
 import { cn } from "@/lib/utils";
 
@@ -55,9 +56,11 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+          <AuthButton />
         </nav>
 
-        <button
+        <div className="flex items-center md:hidden">
+          <button
           type="button"
           className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -65,7 +68,8 @@ export function Header() {
           aria-expanded={mobileOpen}
         >
           {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
@@ -84,6 +88,7 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
+            <MobileAuthLinks onNavigate={() => setMobileOpen(false)} />
           </div>
         </nav>
       )}

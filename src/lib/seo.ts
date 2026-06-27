@@ -10,12 +10,12 @@ export const siteMetadata: Metadata = {
   description: SITE.description,
   keywords: [
     "Software Engineer",
-    "Backend Developer",
+    "Backend Engineer",
     "DevOps",
     "SRE",
     "Cloud Architecture",
     "System Design",
-    "AI Engineering",
+    "Platform Engineering",
     "Harith Tarmizi",
   ],
   authors: [{ name: SITE.fullName }],
@@ -68,7 +68,7 @@ export function generatePersonJsonLd() {
       "DevOps",
       "Site Reliability Engineering",
       "Cloud Architecture",
-      "AI Engineering",
+      "Platform Engineering",
     ],
   };
 }

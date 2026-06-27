@@ -1,20 +1,14 @@
 import { ABOUT_PARAGRAPHS } from "@/constants/content";
 import { FadeIn } from "@/components/motion/fade-in";
-import { Section, SectionHeader } from "@/components/layout/section";
+import { Section } from "@/components/layout/section";
 
 export function AboutSection() {
   return (
-    <Section id="about">
-      <SectionHeader
-        label="About"
-        title="Engineering is how I think"
-        description="I build systems that work under pressure — not demos that look good in a screenshot."
-      />
-
-      <div className="space-y-6">
+    <Section id="about" className="border-t border-border py-16 md:py-24">
+      <div className="max-w-(--width-prose) space-y-5">
         {ABOUT_PARAGRAPHS.map((paragraph, index) => (
-          <FadeIn key={index} delay={index * 0.1}>
-            <p className="max-w-3xl text-lg leading-relaxed text-muted-foreground">
+          <FadeIn key={index} delay={index * 0.08}>
+            <p className="text-base leading-relaxed text-muted-foreground md:text-lg md:leading-relaxed">
               {paragraph}
             </p>
           </FadeIn>

@@ -9,39 +9,54 @@ export interface SocialLink {
   icon: "github" | "linkedin" | "twitter" | "email";
 }
 
-export interface TechCategory {
+export interface ProofMetric {
+  value: string;
+  label: string;
+}
+
+export interface EngineeringDomain {
   title: string;
-  items: string[];
+  description: string;
+  tools: string[];
 }
 
 export interface Experience {
   company: string;
   role: string;
   duration: string;
+  startDate: string;
+  endDate?: string;
   achievements: string[];
 }
 
+export interface ProjectDecision {
+  decision: string;
+  tradeoff: string;
+  outcome: string;
+}
+
+export interface ProjectImpact {
+  label: string;
+  value: string;
+}
+
 export interface Project {
+  slug: string;
   name: string;
+  tagline: string;
+  overview: string;
   description: string;
+  problem: string;
   techStack: string[];
   architecture: string;
   challenges: string[];
   solutions: string[];
+  decisions: ProjectDecision[];
+  impact: ProjectImpact[];
+  lessonsLearned: string[];
   githubUrl: string;
   liveUrl?: string;
   status: "Production" | "Open Source" | "In Development" | "Archived";
-}
-
-export interface BlogPost {
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  slug: string;
-}
-
-export interface PhilosophyItem {
-  title: string;
-  description: string;
+  year: string;
+  featured: boolean;
 }

@@ -1,58 +1,71 @@
-import { AtSign, GitBranch, Mail, Users } from "lucide-react";
-import { SOCIAL_LINKS } from "@/constants/site";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion/fade-in";
+import { Download, ExternalLink, Mail } from "lucide-react";
+import { GitHubIcon, LinkedInIcon } from "@/components/icons/social";
+import { Button } from "@/components/ui/button";
+import { FadeIn } from "@/components/motion/fade-in";
 import { Section, SectionHeader } from "@/components/layout/section";
-import type { SocialLink } from "@/types";
-
-const iconMap = {
-  github: GitBranch,
-  linkedin: Users,
-  twitter: AtSign,
-  email: Mail,
-} as const;
-
-function SocialCard({ link }: { link: SocialLink }) {
-  const Icon = iconMap[link.icon];
-
-  return (
-    <a
-      href={link.href}
-      target={link.icon === "email" ? undefined : "_blank"}
-      rel={link.icon === "email" ? undefined : "noopener noreferrer"}
-      className="group flex items-center gap-4 rounded-xl border border-border/50 bg-card/20 p-5 transition-colors hover:border-border hover:bg-card/40"
-    >
-      <div className="flex size-10 items-center justify-center rounded-lg border border-border/40 bg-background/50 transition-colors group-hover:border-border/60">
-        <Icon className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" />
-      </div>
-      <div>
-        <p className="text-sm font-medium text-foreground">{link.label}</p>
-        <p className="text-xs text-muted-foreground">
-          {link.icon === "email"
-            ? link.href.replace("mailto:", "")
-            : link.href.replace(/^https?:\/\/(www\.)?/, "")}
-        </p>
-      </div>
-    </a>
-  );
-}
+import { SITE, SOCIAL_LINKS } from "@/constants/site";
 
 export function ContactSection() {
+  const linkedIn = SOCIAL_LINKS.find((link) => link.icon === "linkedin");
+  const github = SOCIAL_LINKS.find((link) => link.icon === "github");
+
   return (
     <Section id="contact">
       <SectionHeader
         label="Contact"
-        title="Let's connect"
-        description="Open to conversations about engineering, infrastructure, and building products."
+        title="Start a conversation"
+        description={SITE.availability}
       />
 
       <FadeIn>
-        <StaggerContainer className="grid gap-4 sm:grid-cols-2">
-          {SOCIAL_LINKS.map((link) => (
-            <StaggerItem key={link.label}>
-              <SocialCard link={link} />
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+        <div className="max-w-(--width-prose)">
+          <Button
+            render={
+              <a
+                href={`mailto:${SITE.email}?subject=Engineering%20conversation`}
+              />
+            }
+            size="lg"
+            className="h-12 w-full px-8 sm:w-auto"
+          >
+            <Mail data-icon="inline-start" />
+            Email Harith
+          </Button>
+
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            {linkedIn && (
+              <a
+                href={linkedIn.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-11 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+                aria-label={linkedIn.label}
+              >
+                <LinkedInIcon className="size-4" />
+              </a>
+            )}
+            {github && (
+              <a
+                href={github.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex size-11 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-foreground/20 hover:text-foreground"
+                aria-label={github.label}
+              >
+                <GitHubIcon className="size-4" />
+              </a>
+            )}
+            <a
+              href={SITE.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <Download className="size-4" />
+              Download resume
+            </a>
+          </div>
+        </div>
       </FadeIn>
     </Section>
   );

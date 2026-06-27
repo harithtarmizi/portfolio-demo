@@ -7,22 +7,22 @@ export function ExperienceSection() {
     <Section id="experience">
       <SectionHeader
         label="Experience"
-        title="Where I've built and shipped"
-        description="Roles focused on backend systems, platform engineering, and reliability."
+        title="Where I've shipped"
+        description="Backend systems, platform tooling, and reliability work across three companies."
       />
 
       <div className="relative">
         <div
-          className="absolute top-0 left-[7px] hidden h-full w-px bg-border/50 md:block"
+          className="absolute top-0 left-[7px] h-full w-px bg-border"
           aria-hidden="true"
         />
 
         <StaggerContainer className="space-y-12">
           {EXPERIENCES.map((exp) => (
             <StaggerItem key={`${exp.company}-${exp.duration}`}>
-              <article className="relative md:pl-10">
+              <article className="relative pl-8 md:pl-10">
                 <div
-                  className="absolute top-2 left-0 hidden size-[15px] rounded-full border-2 border-border bg-background md:block"
+                  className="absolute top-2 left-0 size-[15px] rounded-full border-2 border-border bg-background"
                   aria-hidden="true"
                 />
 
@@ -33,7 +33,10 @@ export function ExperienceSection() {
                     </h3>
                     <p className="text-muted-foreground">{exp.company}</p>
                   </div>
-                  <time className="mt-1 text-sm text-muted-foreground/70 sm:mt-0">
+                  <time
+                    className="mt-1 font-mono text-xs text-muted-foreground sm:mt-0"
+                    dateTime={`${exp.startDate}/${exp.endDate ?? ""}`}
+                  >
                     {exp.duration}
                   </time>
                 </div>

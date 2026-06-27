@@ -1,33 +1,31 @@
-import type { NavLink, SocialLink } from "@/types";
+import type { NavLink, ProofMetric, SocialLink } from "@/types";
 
 export const SITE = {
   name: "Harith",
   fullName: "Harith Tarmizi",
   title: "Software Engineer",
   description:
-    "Software engineer building scalable systems, cloud infrastructure, and AI-powered products.",
+    "Backend engineer building production systems — architecture, platform engineering, and reliability.",
   url: "https://harithtarmizi.dev",
   email: "hello@harithtarmizi.dev",
   resumeUrl: "/resume.pdf",
+  availability:
+    "Open to senior engineering roles, staff-level platform work, and technical leadership conversations.",
+  identity: "Backend · Platform · SRE · Cloud · AI",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "About", href: "#about" },
-  { label: "Stack", href: "#stack" },
+  { label: "Work", href: "#work" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Philosophy", href: "#philosophy" },
-  { label: "Blog", href: "#blog" },
+  { label: "Focus", href: "#focus" },
   { label: "Contact", href: "#contact" },
 ];
 
-export const HERO_ROLES = [
-  "Software Engineer",
-  "DevOps Engineer",
-  "SRE",
-  "Cloud Builder",
-  "AI Engineer",
-] as const;
+export const HERO_PROOF: ProofMetric[] = [
+  { value: "12M+", label: "API requests/day" },
+  { value: "99.95%", label: "SLA maintained" },
+  { value: "8 min", label: "deployment time" },
+];
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
